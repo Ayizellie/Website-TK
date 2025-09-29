@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelo
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-700 text-white mt-20">
+    <footer className="bg-[#3C80C7] text-white mt-20">
       <div className="px-6 md:px-20 py-10 max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         {/* Logo dan Motto */}
         <div className="flex flex-col items-center md:items-start">
@@ -39,7 +39,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="text-center text-sm py-4 bg-blue-800">
+      <div className="text-center text-sm py-4 bg-[#064A8C]">
         © 2025, TK NEGERI 1 SANGATTA UTARA
       </div>
     </footer>

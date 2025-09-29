@@ -15,7 +15,7 @@ const SejarahSekolah = () => {
         </a>
 
         {/* Judul */}
-        <h1 className="text-blue-800 font-bold text-2xl mb-2 mt-6">PROFIL SEKOLAH</h1>
+        <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-4">PROFIL SEKOLAH</h1>
 
         {/* Bagian 1 - Putih */}
         <div className="relative flex flex-col lg:flex-row items-center bg-white rounded-2xl shadow-md p-4 lg:p-8 overflow-visible gap-6">

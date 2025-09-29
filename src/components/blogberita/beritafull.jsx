@@ -41,7 +41,7 @@ const BlogBerita = () => {
             </a>
         </div>
 
-      <h2 className="text-2xl md:text-3xl font-bold text-blue-900 text-center mb-10">
+      <h2 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-16">
         Blog dan Berita
       </h2>
 

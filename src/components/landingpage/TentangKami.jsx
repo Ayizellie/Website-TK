@@ -10,11 +10,42 @@ const TentangKami = () => {
         <div className="flex flex-col md:flex-row justify-center gap-8">
           <div className="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex-1 text-center min-h-[180px]">
             <h3 className="text-lg font-semibold text-blue-700 mb-4">✨ Visi</h3>
-            <p className="text-gray-700">[Isi visi di sini]</p>
+            <p className="text-gray-700">
+              Mewujudkan pertumbuhan generasi penerus bangsa yang beriman dan bertagwa yang bahagia sehat ceria berakhlak mulia kreatif dan mandiri untuk siap memasuki pendidikan dasar.
+            </p>
           </div>
           <div className="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex-1 text-center min-h-[180px]">
             <h3 className="text-lg font-semibold text-blue-700 mb-4">✨ Misi</h3>
-            <p className="text-gray-700">[Isi misi di sini]</p>
+            <p className="text-gray-700 text-start mb-4">
+              1.	Menanamkan nilai-nilai agama sesuai dengan agama dan keyakinan yang dianut.
+            </p>
+            <p className="text-gray-700 text-start mb-4">
+              2.	Meningkatkan ketaqwaan sesuai agama yang dianutnya.
+            </p>
+            <p className="text-gray-700 text-start mb-4">
+              3.	Mengembangkan serta menerapkan budaya local.
+            </p>
+            <p className="text-gray-700 text-start mb-4">
+              4.	Menanamkan nilai-nilai Bhineka Tunggal Ika dalam semua aspek.
+            </p>
+            <p className="text-gray-700 text-start mb-4">
+              5.	Mengembangkan dan mendorong kecerdasan anak yang unik dan mandiri dengan mengoptimalkan kegitan yang aktif kreatif dan menyenangkan sesuai dengan bakat dan tingkat perkembangan anak.
+            </p>
+            <p className="text-gray-700 text-start mb-4">
+              6.	Mengembangkan perilaku yang bertanggung jawab dan mandiri.
+            </p>
+            <p className="text-gray-700 text-start mb-4">
+              7.	Menanakan sikap sportivitas dan mengakui kelebihan lawan.
+            </p>
+            <p className="text-gray-700 text-start mb-4">
+              8.	Mengembangkan kemampuan dasar anak melalui kegiatan pengembangan aspek bahasa, kognitif, fisik motorik dan seni.
+            </p>
+            <p className="text-gray-700 text-start mb-4">
+              9.	Menyelenggarakan layanan dan pengelolaan PAUD yang profesional, akuntabel dan berdaya saing.
+            </p>
+            <p className="text-gray-700 text-start mb-4">
+              10.	Menanamkan sikap sosial  semua warga TK Negeri 1 Kecamatan Sangatta Utara.
+            </p>
           </div>
         </div>
       </div>

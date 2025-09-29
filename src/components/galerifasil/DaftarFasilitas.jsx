@@ -4,16 +4,19 @@ import { HiArrowLeft } from "react-icons/hi";
 
 const DaftarFasilitas = () => {
   const fasilitas = [
-    {title: "Ruang Kelas A1: Sentra Kreativitas", images: ""},
-    {title: "Ruang Kelas B1: Sentra Blok", images: ""},
-    {title: "Ruang Kelas B2: Sentra Main Peran", images: ""},
-    {title: "Ruang Kelas B3: Sentra Persiapan", images: ""},
-    {title: "Wastafel", images: ""},
-    {title: "Rak Sepatu", images: ""},
-    {title: "Lemari", images: ""},
-    {title: "Kursi", images: ""},
-    {title: "Meja", images: ""},
-    {title: "Rak ", images: ""},
+    {title: "Ruang Kelas A1: Sentra Kreativitas", images:"/images/sentra_kreativitas.jpg"},
+    {title: "Ruang Kelas B1: Sentra Balok", images: "/images/sentra_balok.jpg"},
+    {title: "Ruang Kelas B2: Sentra Main Peran", images: "/images/sentra_main.jpg"},
+    {title: "Ruang Kelas B3: Sentra Persiapan", images: "/images/sentra_persiapan.jpg"},
+    {title: "Tempat Cuci Tangan", images: "/images/alat_cucitangan.jpg"},
+    {title: "Rak Sepatu", images: "/images/rak_sepatu.jpg"},
+    {title: "Lemari", images: "/images/lemari.jpg"},
+    {title: "Kursi", images: "/images/kursi.jpg"},
+    {title: "Meja", images: "/images/meja.jpg"},
+    {title: "Toilet ", images: "/images/toilet.jpg"},
+    {title: "Papan Tulis ", images: "/images/papan_tulis.jpg"},
+    {title: "Ruang Guru ", images: "/images/ruang_guru.jpg"},
+    {title: "Alat Kebersihan ", images: "/images/alat_kebersihan.jpg"},
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -46,7 +49,7 @@ const DaftarFasilitas = () => {
         <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-4">
           FASILITAS SEKOLAH
         </h1>
-        <h2 className="text-center text-xl md:text-sm font-normal text-[#4B5563] mb-20">
+        <h2 className="text-center text-md md:text-base text-[#4B5563] mb-20">
           Kami menyediakan berbagai fasilitas sekolah yang mendukung kegiatan belajar mengajar siswa
         </h2>
 
@@ -57,7 +60,7 @@ const DaftarFasilitas = () => {
                 <div className="w-full overflow-hidden rounded-lg shadow">
                   <img src={item.images} alt={item.title} className="object-cover w-full h-40"/>
                 </div>
-                <div className="bg-[#5B8AC9] bg-opacity-80 text-black text-sm w-60 h-10 text-center py-2 rounded-xl">{item.title}</div>
+                <div className="bg-[#5B8AC9] text-black text-sm w-60 h-10 text-center py-2 rounded-xl -mt-4">{item.title}</div>
               </div>
             ))}
           </div>

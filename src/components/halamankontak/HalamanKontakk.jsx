@@ -17,10 +17,10 @@ const HalamanKontakk = () => {
       </div>
       
       <div className="max-w-6xl mx-auto px-4 py-8">
-        <h1 className="text-left text-2xl md:text-5xl font-extrabold text-[#064A8C] mb-8">
+        <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-4">
           Kontak Kami
         </h1>
-        <p className="text-left text-2xl md:text-sm font-medium text-black mb-20">
+        <p className="text-center text-md md:text-base text-[#4B5563] mb-20">
           Hubungi kami jika memiliki pertanyaan, komentar dan saran  
         </p>
 

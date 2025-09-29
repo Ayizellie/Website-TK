@@ -12,8 +12,8 @@ const Kurikulum = () => {
                 </a>
             </div>
             <div className="max-w-6xl mx-auto px-4 mb-20">
-                <h1 className="text-[#064A8C] font-bold text-5xl mb-4 mt-6"> Kurikulum</h1>
-                <h2 className="text-black font-normal text-lg mb-8">Kurikulum yang digunakan pada sekolah TK Negeri 1 Sangatta Utara</h2>
+                <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-4"> Kurikulum</h1>
+                <h2 className="text-center text-md md:text-base text-[#4B5563] mb-20">Kurikulum yang digunakan pada sekolah TK Negeri 1 Sangatta Utara</h2>
 
                 <div className="bg-[#3C80C7] bg-opacity-25 px-4 py-40 rounded-xl shadow-xl mb-20">
                     <p className="text-black text-base text-center font-normal">

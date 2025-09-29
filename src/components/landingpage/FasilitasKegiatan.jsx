@@ -37,7 +37,7 @@ const Fasilitas = () => {
         {/* Tombol */}
         <div className="flex justify-end mt-6">
           <a
-            href="/fasilitas"
+            href="/fasilitas-kegiatan"
             className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full transition"
           >
             Selengkapnya &gt;&gt;

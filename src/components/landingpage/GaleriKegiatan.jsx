@@ -26,7 +26,7 @@ const GaleriKegiatan = () => {
         <div className="mb-10">
           <div className="flex justify-center items-center gap-2 mb-3">
             <img src="/images/logo2.png" alt="icon" className="w-6 h-6" />
-            <h2 className="text-2xl font-bold text-blue-800">Galeri Kegiatan</h2>
+            <h2 className="text-2xl font-bold text-blue-800">Prestasi</h2>
           </div>
           <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
             Tidak hanya untuk tempat belajar, TK Negeri 1 juga sebagai tempat yang mewadahi anak-anaknya untuk terus berprestasi dan mengembangkan bakat minatnya.

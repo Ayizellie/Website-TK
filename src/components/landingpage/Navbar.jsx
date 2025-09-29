@@ -120,7 +120,7 @@ export default function Navbar() {
               <a href="#informasi" onClick={toggleMenu}>Informasi</a>
               <a href="#kontak" onClick={toggleMenu}>Kontak</a>
               <a href="#pembelajaran" onClick={toggleMenu}>Pembelajaran</a>
-              <a href="#ppdb" onClick={toggleMenu}>PPDB</a>
+              <a href="/ppdb" onClick={toggleMenu}>PPDB</a>
               <button className="w-full text-left border border-gray-400 px-5 py-1.5 rounded-full text-sm text-gray-700 hover:bg-gray-100 mt-4">
                 Masuk
               </button>
