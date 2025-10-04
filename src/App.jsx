@@ -18,6 +18,8 @@ import KelolaBerita from './pages/KelolaBerita';
 import PPDB from './pages/PPDB';
 import FormulirPendaftaran from './pages/FormulirPendaftaran';
 import VerificationPage from './pages/VerificationPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import './App.css';
 
 function App() {
@@ -42,7 +44,9 @@ function App() {
     '/admin/kelolaberita': <KelolaBerita/>,
     '/ppdb': <PPDB />,
     '/formulir-ppdb': <FormulirPendaftaran />,
-    '/verifikasi-ppdb': <VerificationPage />
+    '/verifikasi-ppdb': <VerificationPage />,
+    '/login': <LoginPage />,
+    '/register': <RegisterPage />
   };
 
   const PageComponent = routes[path] || <LandingPage />;
