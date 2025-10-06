@@ -15,7 +15,13 @@ const SejarahSekolah = () => {
         </a>
 
         {/* Judul */}
-        <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-4">PROFIL SEKOLAH</h1>
+        <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-4">Profil Sekolah</h1>
+        
+        <img
+          src="/images/motto.png"
+          alt="Motto Sekolah"
+          className="absolute top-16 right-10 w-32 md:w-22 lg:w-30"
+        />
 
         {/* Bagian 1 - Putih */}
         <div className="relative flex flex-col lg:flex-row items-center bg-white rounded-2xl shadow-md p-4 lg:p-8 overflow-visible gap-6">

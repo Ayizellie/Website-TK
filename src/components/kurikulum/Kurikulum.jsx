@@ -15,6 +15,12 @@ const Kurikulum = () => {
                 <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-4"> Kurikulum</h1>
                 <h2 className="text-center text-md md:text-base text-[#4B5563] mb-20">Kurikulum yang digunakan pada sekolah TK Negeri 1 Sangatta Utara</h2>
 
+                <img 
+                    src="/images/motto.png" 
+                    alt="Motto Sekolah" 
+                    className="absolute top-28 right-10 w-32 md:w-22 lg:w-30"
+                />
+
                 <div className="bg-[#3C80C7] bg-opacity-25 px-4 py-40 rounded-xl shadow-xl mb-20">
                     <p className="text-black text-base text-center font-normal">
                         isi kurikulum

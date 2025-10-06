@@ -24,6 +24,12 @@ const HalamanKontakk = () => {
           Hubungi kami jika memiliki pertanyaan, komentar dan saran  
         </p>
 
+        <img 
+          src="/images/motto.png" 
+          alt="Motto Sekolah" 
+          className="absolute top-28 right-10 w-32 md:w-22 lg:w-30"
+        />
+
         <div className="flex flex-col md:flex-row gap-20">
           <div className="flex flex-col gap-4 md:w-1/4">
             <div className="bg-[#3C80C7] text-white rounded-md p-4">

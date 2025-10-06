@@ -11,7 +11,7 @@ const DetailBerita = () => {
     id: "1",
     judul: "Pelepasan Angkatan 2024-2025",
     tanggal: "27 Mei 2025",
-    gambar: "/images/galeri1.jpg",
+    gambar: "/images/galeri3.jpg",
     isi: `SANGATTA – Pada 27 Mei 2025, telah terasa salah satu babak akhir anak-anak TK Negeri 1 Sangatta Utara. Momen perpisahan ini menjadi penuh haru dan bahagia. Anak-anak tampil mengenakan baju adat serta menampilkan pertunjukan seni yang telah mereka siapkan bersama guru.
 
 Orang tua, guru, dan para undangan ikut merayakan keberhasilan anak-anak menyelesaikan jenjang pendidikan PAUD dengan penuh cinta, tawa, dan kenangan indah. Acara ini menjadi bukti betapa pentingnya kolaborasi antara sekolah dan keluarga dalam tumbuh kembang anak.
@@ -32,8 +32,13 @@ Dengan semangat dan harapan, anak-anak TK Negeri 1 siap melangkah menuju jenjang
   return (
     <>
       <Navbar />
-      <div className="py-16 px-4 md:px-20 bg-white max-w-5xl mx-auto">
+      <div className="py-28 px-4 md:px-20 bg-white max-w-5xl mx-auto">
         <h1 className="text-2xl md:text-3xl font-bold text-blue-800 mb-3">{berita.judul}</h1>
+        <img 
+          src="/images/motto.png" 
+          alt="Motto Sekolah" 
+          className="absolute top-24 right-10 w-32 md:w-22 lg:w-30"
+        />
         <p className="text-gray-500 text-sm mb-5">{berita.tanggal}</p>
         <img
           src={berita.gambar}

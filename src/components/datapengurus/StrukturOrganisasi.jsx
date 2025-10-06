@@ -13,7 +13,13 @@ const StrukturOrganisasi = () => {
       </a>
 
       {/* Judul */}
-      <h2 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-16">STRUKTUR ORGANISASI</h2>
+      <h2 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-16">Struktur Organisasi</h2>
+
+      <img
+        src="/images/motto.png"
+        alt="Motto Sekolah"
+        className="absolute top-28 right-10 w-32 md:w-22 lg:w-30"
+      />
 
       {/* Gambar */}
       <div className="bg-blue-100 p-4 md:p-6 rounded-2xl shadow-md">

@@ -40,6 +40,12 @@ const DaftarGaleri = () => {
 
             <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-12">Galeri Kegiatan</h1>
 
+            <img 
+                src="/images/motto.png" 
+                alt="Motto Sekolah" 
+                className="absolute top-28 right-10 w-32 md:w-22 lg:w-30"
+            />
+
             <div className="max-w-6xl mx-auto px-4">
                 {currentItems.map((activity, index) => (
                     <div key={index} className="bg-white border rounded-3xl mb-14 p-8 shadow-sm">

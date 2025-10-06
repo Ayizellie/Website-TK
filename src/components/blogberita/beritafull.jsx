@@ -5,11 +5,11 @@ import { HiArrowLeft } from "react-icons/hi";
 const dataBerita = [
   {
     id: "1",
-    judul: "Pelepasan Angkatan 2024-2025",
+    judul: "Pelepasan Angkatan",
     tanggal: "27 Mei 2025",
     deskripsi:
       "Pada 27 Mei 2025, telah terasa salah satu babak akhir anak-anak TK Negeri 1 Sangatta Utara. Selamat semoga anak-anak semakin hebat dan berprestasi di masa depan.",
-    gambar: "/images/galeri1.jpg",
+    gambar: "/images/galeri3.jpg",
   },
   {
     id: "2",
@@ -17,7 +17,7 @@ const dataBerita = [
     tanggal: "11 Juni 2025",
     deskripsi:
       "Pertemuan orang tua murid di TK Negeri 1 Sangatta Utara pada tanggal 11 Juni 2025 dilakukan dalam rangka sinergi antara guru dan orang tua siswa.",
-    gambar: "/images/galeri2.jpg",
+    gambar: "/images/galeri1.jpg",
   },
   {
     id: "3",
@@ -25,7 +25,7 @@ const dataBerita = [
     tanggal: "Juni 2025",
     deskripsi:
       "Anak-anak sangat antusias mengikuti outing class ke Kebun Kelutut. Mereka belajar tentang lebah dan alam sekitar dengan cara yang menyenangkan.",
-    gambar: "/images/galeri3.jpg",
+    gambar: "/images/galeri5.jpg",
   },
 ];
 
@@ -44,6 +44,12 @@ const BlogBerita = () => {
       <h2 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-16">
         Blog dan Berita
       </h2>
+
+      <img 
+        src="/images/motto.png" 
+        alt="Motto Sekolah" 
+        className="absolute top-28 right-10 w-32 md:w-22 lg:w-30"
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {dataBerita.map((berita) => (
