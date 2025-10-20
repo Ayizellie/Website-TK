@@ -1,81 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import NavbarSidebar from "../NavbarSidebar/NavbarSidebar";
-import Swal from "sweetalert2";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-const ListFasilitas = ({ onTambah }) => {
-  const [dataFasilitas, setDataFasilitas] = useState([
-    { id: 1, nama: "Fasilitas 1", foto: "/images/galeri1.jpg" },
-    { id: 2, nama: "Fasilitas 2", foto: "/images/galeri2.jpg" },
-  ]);
-
-  // Hapus fasilitas
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Apakah kamu yakin?",
-      text: "Fasilitas ini akan dihapus!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Ya, hapus!",
-      cancelButtonText: "Batal",
-      customClass: {
-        confirmButton:
-          "bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-md",
-        cancelButton:
-          "bg-gray-300 hover:bg-gray-400 text-black font-semibold px-4 py-2 rounded-md ml-8",
-      },
-      buttonsStyling: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        setDataFasilitas((prev) => prev.filter((item) => item.id !== id));
-        Swal.fire({
-          icon: "success",
-          title: "Terhapus!",
-          text: "Fasilitas berhasil dihapus.",
-          confirmButtonText: "OK",
-          customClass: {
-            confirmButton:
-              "bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md",
-          },
-          buttonsStyling: false,
-        });
-      }
-    });
-  };
-
-  // Edit fasilitas
-  const handleEdit = (item) => {
-    Swal.fire({
-      title: "<span style='font-size:1.25rem; font-weight:bold; color:#064A8C'>Edit Fasilitas</span>",
-      html: `
-        <input id="nama" class="swal2-input text-lg text-gray-400" placeholder="${item.nama || 'Nama Fasilitas'}">
-      `,
-      focusConfirm: false,
-      showCancelButton: true,
-      confirmButtonText: "Simpan",
-      cancelButtonText: "Batal",
-      customClass: {
-        confirmButton: "bg-blue-400 text-white px-4 py-2 rounded-md",
-        cancelButton: "bg-red-300 text-white px-4 py-2 rounded-md ml-2",
-      },
-      buttonsStyling: false,
-      preConfirm: () => {
-        const nama = document.getElementById("nama").value;
-        if (!nama) Swal.showValidationMessage("Isi nama fasilitas!");
-        return { nama };
-      },
-    }).then((result) => {
-      if (result.isConfirmed) {
-        setDataFasilitas((prev) =>
-          prev.map((f) =>
-            f.id === item.id ? { ...f, nama: result.value.nama } : f
-          )
-        );
-        Swal.fire("Tersimpan!", "Fasilitas berhasil diperbarui.", "success");
-      }
-    });
-  };
-
+const ListFasilitas = ({ dataFasilitas, onTambah, onEdit, onHapus }) => {
   return (
     <NavbarSidebar>
       <div className="pt-0 px-8 pb-8">
@@ -93,43 +20,54 @@ const ListFasilitas = ({ onTambah }) => {
           Tambah Fasilitas
         </button>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {dataFasilitas.map((item) => (
-            <div
-              key={item.id}
-              className="border rounded-xl overflow-hidden shadow-lg bg-white transition transform hover:scale-105"
-            >
-              <img
-                src={item.foto}
-                alt={item.nama}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-semibold text-gray-800">{item.nama}</h3>
+        {dataFasilitas.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {dataFasilitas.map((item) => (
+              <div
+                key={item.id}
+                className="border rounded-xl overflow-hidden shadow-lg bg-white transition transform hover:scale-105"
+              >
+                {/* Tampilkan foto atau fallback */}
+                <img
+                  src={
+                    item.path
+                      ? `http://127.0.0.1:8000/storage/${item.path}`
+                      : "https://via.placeholder.com/400x160?text=No+Image"
+                  }
+                  alt={item.name || "Fasilitas"}
+                  className="w-full h-40 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="font-semibold text-gray-800">
+                    {item.name || "Tanpa Nama"}
+                  </h3>
 
-                <div className="flex gap-2 mt-4">
-                  {/* Tombol Edit */}
-                  <button
-                    onClick={() => handleEdit(item)}
-                    className="p-2 text-blue-300 rounded hover:bg-blue-200"
-                    title="Edit"
-                  >
-                    <FaEdit />
-                  </button>
+                  <div className="flex gap-2 mt-4">
+                    <button
+                      onClick={() => onEdit(item)}
+                      className="p-2 text-blue-500 rounded hover:bg-blue-100"
+                      title="Edit"
+                    >
+                      <FaEdit />
+                    </button>
 
-                  {/* Tombol Hapus */}
-                  <button
-                    onClick={() => handleDelete(item.id)}
-                    className="p-2 text-red-300 rounded hover:bg-red-200"
-                    title="Hapus"
-                  >
-                    <FaTrash />
-                  </button>
+                    <button
+                      onClick={() => onHapus(item.id)}
+                      className="p-2 text-red-500 rounded hover:bg-red-100"
+                      title="Hapus"
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-gray-500 text-center mt-8 text-sm">
+            Belum ada fasilitas.
+          </p>
+        )}
       </div>
     </NavbarSidebar>
   );

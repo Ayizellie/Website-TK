@@ -1,83 +1,111 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HiArrowLeft } from "react-icons/hi";
-
-
-const dataBerita = [
-  {
-    id: "1",
-    judul: "Pelepasan Angkatan",
-    tanggal: "27 Mei 2025",
-    deskripsi:
-      "Pada 27 Mei 2025, telah terasa salah satu babak akhir anak-anak TK Negeri 1 Sangatta Utara. Selamat semoga anak-anak semakin hebat dan berprestasi di masa depan.",
-    gambar: "/images/galeri3.jpg",
-  },
-  {
-    id: "2",
-    judul: "Pertemuan orang tua anak didik ajaran 2025-2026",
-    tanggal: "11 Juni 2025",
-    deskripsi:
-      "Pertemuan orang tua murid di TK Negeri 1 Sangatta Utara pada tanggal 11 Juni 2025 dilakukan dalam rangka sinergi antara guru dan orang tua siswa.",
-    gambar: "/images/galeri1.jpg",
-  },
-  {
-    id: "3",
-    judul: "Outing Class ke Kebun Kelutut Sangatta",
-    tanggal: "Juni 2025",
-    deskripsi:
-      "Anak-anak sangat antusias mengikuti outing class ke Kebun Kelutut. Mereka belajar tentang lebah dan alam sekitar dengan cara yang menyenangkan.",
-    gambar: "/images/galeri5.jpg",
-  },
-];
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const BlogBerita = () => {
+  const [dataBerita, setDataBerita] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const BASE_URL = "http://127.0.0.1:8000/api/news";
+
+  useEffect(() => {
+    const fetchBerita = async () => {
+      try {
+        const res = await axios.get(BASE_URL);
+        setDataBerita(res.data.data.data || []);
+      } catch (err) {
+        console.error("Gagal ambil data berita:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBerita();
+  }, []);
+
+  const handleDetail = (item) => {
+    Swal.fire({
+      title: `<strong style="color:#047DD2;">${item.title}</strong>`,
+      html: `
+        <img src="http://127.0.0.1:8000/storage/${item.thumbnail}" 
+             alt="${item.title}" 
+             class="w-full h-48 object-cover rounded-lg mb-4"/>
+        <div class="text-gray-700 text-sm text-justify whitespace-pre-line">${item.content}</div>
+      `,
+      showCloseButton: true,
+      focusConfirm: false,
+      confirmButtonText: "Tutup",
+      customClass: {
+        confirmButton: "bg-blue-500 text-white px-4 py-2 rounded-md",
+      },
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="w-full text-center py-20 text-gray-500">
+        Sedang memuat berita...
+      </div>
+    );
+  }
+
   return (
-    <div className="py-16 px-4 md:px-20 bg-white">
+    <div className="relative py-16 px-4 md:px-20 bg-white">
       <div className="mb-6 mt-6">
-            <a
-                href="/"
-                className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
-            >
-                <HiArrowLeft className="mr-1 text-2xl" />
-            </a>
-        </div>
+        <a
+          href="/"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
+        >
+          <HiArrowLeft className="mr-1 text-2xl" />
+        </a>
+      </div>
 
       <h2 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-16">
         Blog dan Berita
       </h2>
 
-      <img 
-        src="/images/motto.png" 
-        alt="Motto Sekolah" 
+      {/* Motto Sekolah */}
+      <img
+        src="/images/motto.png"
+        alt="Motto Sekolah"
         className="absolute top-28 right-10 w-32 md:w-22 lg:w-30"
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {dataBerita.map((berita) => (
-          <div
-            key={berita.id}
-            className="bg-white border rounded-2xl shadow-md overflow-hidden"
-          >
-            <img
-              src={berita.gambar}
-              alt={berita.judul}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-blue-800 font-bold text-base mb-1">{berita.judul}</h3>
-              <p className="text-sm text-gray-500 mb-2">{berita.tanggal}</p>
-              <p className="text-sm text-gray-700 mb-3 line-clamp-3">
-                {berita.deskripsi}
-              </p>
-              <a
-                href={`/detail-berita?id=1`}
-                className="text-pink-600 text-sm hover:underline font-medium"
-              >
-                Baca Selengkapnya &gt;&gt;
-              </a>
+      {dataBerita.length === 0 ? (
+        <p className="text-center text-gray-500">Belum ada berita.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {dataBerita.map((berita) => (
+            <div
+              key={berita.id}
+              className="bg-white border rounded-2xl shadow-md overflow-hidden"
+            >
+              <img
+                src={`http://127.0.0.1:8000/storage/${berita.thumbnail}`}
+                alt={berita.title}
+                className="w-full h-48 object-cover"
+                onError={(e) => (e.target.src = "/no-image.jpg")}
+              />
+              <div className="p-4">
+                <h3 className="text-blue-800 font-bold text-base mb-1">
+                  {berita.title}
+                </h3>
+                <p className="text-sm text-gray-500 mb-2">
+                  {new Date(berita.created_at).toLocaleDateString("id-ID")}
+                </p>
+                <p className="text-sm text-gray-700 mb-3 line-clamp-3">
+                  {berita.content}
+                </p>
+                <button
+                  onClick={() => handleDetail(berita)}
+                  className="text-pink-600 text-sm hover:underline font-medium"
+                >
+                  Baca Selengkapnya &gt;&gt;
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

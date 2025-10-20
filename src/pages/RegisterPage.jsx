@@ -23,7 +23,6 @@ const RegisterPage = () => {
     const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ubah key confirmPassword jadi password_confirmation
     const dataToSend = {
         name: formData.name,
         email: formData.email,

@@ -8,8 +8,8 @@ const SearchForm = ({ nomor, onChange, onSubmit }) => {
             type="text"
             value={nomor}
             onChange={onChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-            placeholder="cth: 082345678901"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm uppercase"
+            placeholder="cth: ADM-68F517AB9A548"
         />
         <p className="text-xs text-gray-500 mt-2">Silahkan cari nomor pendaftaran untuk melihat status verifikasi pendaftaran</p>
         <button

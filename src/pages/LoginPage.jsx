@@ -14,24 +14,28 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const response = await axios.post('http://127.0.0.1:8000/api/auth/login', formData);
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/auth/login', formData);
 
-    console.log('Login berhasil:', response.data);
+      console.log('Login berhasil:', response.data);
 
-    // misal backend kirim token
-    localStorage.setItem('token', response.data.token);
+      // simpan token dan user
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
 
-    // arahkan ke dashboard
-    window.location.href = '/dashboard';
-  } catch (error) {
-    console.error('Login gagal:', error.response?.data || error.message);
-    alert('Email atau password salah, coba lagi ya sayang 💛');
-  }
-};
-
+      // arahkan sesuai role
+      if (response.data.user.role === 'admin') {
+        window.location.href = '/admin/dashboard';
+      } else {
+        window.location.href = '/dashboard';
+      }
+    } catch (error) {
+      console.error('Login gagal:', error.response?.data || error.message);
+      alert('Email atau password salah, coba lagi ya 💛');
+    }
+  };
 
   const handleBack = () => {
     window.location.href = '/';

@@ -20,6 +20,7 @@ import FormulirPendaftaran from './pages/FormulirPendaftaran';
 import VerificationPage from './pages/VerificationPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import HalamanProfile from './components/halamanprofile/HalamanProfile';
 import './App.css';
 
 function App() {
@@ -46,7 +47,8 @@ function App() {
     '/formulir-ppdb': <FormulirPendaftaran />,
     '/verifikasi-ppdb': <VerificationPage />,
     '/login': <LoginPage />,
-    '/register': <RegisterPage />
+    '/register': <RegisterPage />,
+    '/profil':<HalamanProfile/>
   };
 
   const PageComponent = routes[path] || <LandingPage />;

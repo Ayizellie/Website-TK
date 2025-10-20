@@ -5,24 +5,29 @@ import Swal from "sweetalert2";
 
 const FormFasilitas = ({ data, onSimpan, onBatal }) => {
   const [nama, setNama] = useState("");
-  const [foto, setFoto] = useState(""); // hanya 1 foto
+  const [foto, setFoto] = useState(""); // preview foto
+  const [fotoFile, setFotoFile] = useState(null); // file asli untuk upload
 
   useEffect(() => {
     if (data) {
-      setNama(data.nama);
-      setFoto(data.foto);
+      setNama(data.name || "");
+      setFoto(data.path ? `http://127.0.0.1:8000/storage/${data.path}` : "");
+      setFotoFile(null);
+    } else {
+      setNama("");
+      setFoto("");
+      setFotoFile(null);
     }
   }, [data]);
 
-  // Upload / ganti foto
   const handleUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
+      setFotoFile(file);
       setFoto(URL.createObjectURL(file));
     }
   };
 
-  // Hapus foto
   const handleDelete = () => {
     Swal.fire({
       title: "Apakah Anda yakin?",
@@ -39,18 +44,30 @@ const FormFasilitas = ({ data, onSimpan, onBatal }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         setFoto("");
+        setFotoFile(null);
         Swal.fire("Terhapus!", "Foto berhasil dihapus.", "success");
       }
     });
   };
 
-  // Simpan fasilitas
-  const handleSave = () => {
-    if (!nama || !foto) {
-      Swal.fire("Error", "Isi semua field dulu!", "error");
+  const handleSave = async () => {
+    if (!nama) {
+      Swal.fire("Error", "Isi nama fasilitas dulu!", "error");
       return;
     }
-    onSimpan({ nama, foto });
+
+    const formData = new FormData();
+    formData.append("name", nama);
+    if (fotoFile) {
+      formData.append("image", fotoFile);
+    }
+
+    try {
+      await onSimpan(formData);
+    } catch (error) {
+      console.error(error);
+      Swal.fire("Gagal!", "Terjadi kesalahan saat menyimpan data.", "error");
+    }
   };
 
   return (
@@ -80,7 +97,7 @@ const FormFasilitas = ({ data, onSimpan, onBatal }) => {
             Foto Fasilitas
           </label>
           <div className="flex gap-3 flex-wrap items-center">
-            {foto && (
+            {foto ? (
               <div className="relative w-32 h-32 border border-gray-300 rounded-xl overflow-hidden flex items-center justify-center">
                 <img
                   src={foto}
@@ -90,10 +107,14 @@ const FormFasilitas = ({ data, onSimpan, onBatal }) => {
                 <button
                   onClick={handleDelete}
                   className="absolute bottom-2 right-2 bg-white p-1 rounded-full shadow"
+                  title="Hapus Foto"
                 >
                   <FaTrashAlt className="text-red-500" />
                 </button>
-                <label className="absolute bottom-2 left-2 bg-white p-1 rounded-full shadow cursor-pointer">
+                <label
+                  className="absolute bottom-2 left-2 bg-white p-1 rounded-full shadow cursor-pointer"
+                  title="Ganti Foto"
+                >
                   <FaEdit className="text-blue-500" />
                   <input
                     type="file"
@@ -103,9 +124,7 @@ const FormFasilitas = ({ data, onSimpan, onBatal }) => {
                   />
                 </label>
               </div>
-            )}
-
-            {!foto && (
+            ) : (
               <label className="w-32 h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center cursor-pointer">
                 <span className="text-gray-400 text-2xl">+</span>
                 <input

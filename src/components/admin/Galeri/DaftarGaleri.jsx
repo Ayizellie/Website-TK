@@ -1,180 +1,216 @@
-import React, { useState } from "react";
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
 import NavbarSidebar from "../NavbarSidebar/NavbarSidebar";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const FormGaleriKegiatan = ({ data, onSimpan, onBatal }) => {
-  const [galeri, setGaleri] = useState(data?.nama || "");
-  const [deskripsi, setDeskripsi] = useState(data?.deskripsi || "");
-  const [images, setImages] = useState(data?.foto ? [data.foto] : []);
+  const [namaGaleri, setNamaGaleri] = useState("");
+  const [deskripsi, setDeskripsi] = useState("");
+  const [tanggal, setTanggal] = useState("");
+  const [photos, setPhotos] = useState([]);
+  const token = localStorage.getItem("token");
+  const API_URL = "http://127.0.0.1:8000/api/gallery";
 
-  // Hapus foto
-  const handleDelete = (index) => {
-    Swal.fire({
-      title: "Apakah Anda yakin?",
-      text: "Foto ini akan dihapus dari galeri!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Ya, hapus!",
-      cancelButtonText: "Batal",
-      customClass: {
-        confirmButton: "bg-red-500 text-white px-4 py-2 rounded-md",
-        cancelButton: "bg-gray-300 text-black px-4 py-2 rounded-md ml-2",
-      },
-      buttonsStyling: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const newImages = images.filter((_, i) => i !== index);
-        setImages(newImages);
-        Swal.fire("Terhapus!", "Foto berhasil dihapus.", "success");
+  // jika edit → isi field
+  useEffect(() => {
+    if (data) {
+      setNamaGaleri(data.name || "");
+      setDeskripsi(data.description || "");
+
+      if (data.activity_date) {
+        let formattedDate = data.activity_date;
+
+        // Kalau backend kirim format dd/mm/yyyy → ubah ke yyyy-mm-dd
+        if (formattedDate.includes("/")) {
+          const [d, m, y] = formattedDate.split("/");
+          formattedDate = `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+        } else if (formattedDate.includes("-")) {
+          // kalau udah yyyy-mm-dd biarkan saja
+          const parts = formattedDate.split("-");
+          if (parts[0].length !== 4) {
+            // berarti formatnya dd-mm-yyyy → ubah
+            const [d, m, y] = parts;
+            formattedDate = `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+          }
+        }
+
+        setTanggal(formattedDate);
+      } else {
+        setTanggal("");
       }
-    });
-  };
 
-  // Upload foto baru
-  const handleUpload = (e) => {
-    const files = Array.from(e.target.files);
-    const newUrls = files.map((file) => URL.createObjectURL(file));
-    setImages([...images, ...newUrls]);
-  };
-
-  // Edit foto
-  const handleEdit = (index, e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const newUrl = URL.createObjectURL(file);
-      const newImages = [...images];
-      newImages[index] = newUrl;
-      setImages(newImages);
+      setPhotos(
+        data.images?.map((img) => ({
+          file: null,
+          preview: `http://127.0.0.1:8000/storage/${img.path}`,
+          path: img.path,
+        })) || []
+      );
     }
+  }, [data]);
+
+  const handleAddPhotoBox = () => setPhotos([...photos, { file: null, preview: null }]);
+
+  const handlePhotoChange = (e, index) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const newPhotos = [...photos];
+    newPhotos[index] = { file, preview: URL.createObjectURL(file) };
+    setPhotos(newPhotos);
   };
 
-  // Simpan galeri → **panggil onSimpan ke parent**
-  const handleSave = () => {
-    if (!galeri || !deskripsi || images.length === 0) {
-      Swal.fire("Error", "Lengkapi semua field sebelum menyimpan!", "error");
+  const handleRemovePhoto = (index) => {
+    const newPhotos = [...photos];
+    newPhotos.splice(index, 1);
+    setPhotos(newPhotos);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!namaGaleri || !deskripsi || !tanggal) {
+      Swal.fire("Error", "Lengkapi semua field!", "error");
       return;
     }
 
-    Swal.fire({
-      title: "Apakah Anda yakin?",
-      text: "Galeri kegiatan ini akan disimpan dan diupload!",
-      icon: "question",
-      showCancelButton: true,
-      confirmButtonText: "Ya, Simpan!",
-      cancelButtonText: "Batal",
-      customClass: {
-        confirmButton: "bg-blue-500 text-white px-4 py-2 rounded-md",
-        cancelButton: "bg-gray-300 text-black px-4 py-2 rounded-md ml-2",
-      },
-      buttonsStyling: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // **Kirim data ke parent**
-        onSimpan({
-          nama: galeri,
-          deskripsi,
-          foto: images[0], // bisa ganti ke seluruh array jika ingin multiple foto
-        });
+    try {
+      let galleryId;
 
-        Swal.fire("Tersimpan!", "Galeri kegiatan berhasil disimpan.", "success");
+      if (data) {
+        // Edit
+        await axios.put(
+          `${API_URL}/${data.id}`,
+          { name: namaGaleri, description: deskripsi, activity_date: tanggal },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        galleryId = data.id;
+      } else {
+        // Create
+        const res = await axios.post(
+          API_URL,
+          { name: namaGaleri, description: deskripsi, activity_date: tanggal },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        galleryId = res.data.data.id;
       }
-    });
+
+      // Upload foto baru
+      const uploadedPhotos = [];
+      for (const photo of photos) {
+        if (photo.file) {
+          const formData = new FormData();
+          formData.append("media", photo.file);
+          const upload = await axios.post(`${API_URL}/${galleryId}/media`, formData, {
+            headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${token}` },
+          });
+          uploadedPhotos.push(upload.data);
+        } else if (photo.path) {
+          uploadedPhotos.push({ path: photo.path });
+        }
+      }
+
+      // Kirim data ke parent
+      onSimpan({ id: galleryId, name: namaGaleri, description: deskripsi, activity_date: tanggal }, uploadedPhotos);
+
+      // reset
+      setNamaGaleri("");
+      setDeskripsi("");
+      setTanggal("");
+      setPhotos([]);
+      } catch (err) {
+      console.error("=== ERROR DETAIL ===");
+      if (err.response) {
+        console.error("Status:", err.response.status);
+        console.error("Data:", err.response.data);
+        Swal.fire(
+          "Error",
+          `Gagal menyimpan galeri: ${JSON.stringify(err.response.data)}`,
+          "error"
+        );
+      } else {
+        console.error("Error:", err.message);
+        Swal.fire("Error", "Gagal menyimpan galeri (network error).", "error");
+      }
+    }
   };
 
   return (
     <NavbarSidebar>
       <div className="pt-0 px-8 pb-8">
         <h2 className="text-left text-[#064a8c] text-xl font-medium mb-8">
-          Form Pengisian Galeri Kegiatan
+          {data ? "Edit Galeri" : "Form Galeri Kegiatan"}
         </h2>
 
-        {/* Nama Galeri */}
         <div className="mb-4">
-          <label className="block text-sm text-[#047DD2] font-medium mb-1">
-            Nama Galeri Kegiatan
-          </label>
+          <label className="block text-sm text-[#047DD2] font-medium mb-1">Nama Galeri</label>
           <input
             type="text"
-            value={galeri}
-            onChange={(e) => setGaleri(e.target.value)}
-            placeholder="Nama untuk galeri kegiatan yang akan dibuat"
-            className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder:text-xs"
+            value={namaGaleri}
+            onChange={(e) => setNamaGaleri(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
-        {/* Deskripsi */}
         <div className="mb-4">
-          <label className="block text-sm text-[#047DD2] font-medium mb-1">
-            Deskripsi Singkat
-          </label>
-          <input
-            type="text"
+          <label className="block text-sm text-[#047DD2] font-medium mb-1">Deskripsi</label>
+          <textarea
             value={deskripsi}
             onChange={(e) => setDeskripsi(e.target.value)}
-            placeholder="Deskripsi singkat galeri kegiatan yang dilakukan"
-            className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder:text-xs"
+            rows={4}
+            className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
-        {/* Upload Foto */}
         <div className="mb-4">
-          <label className="block text-sm text-[#047DD2] font-medium mb-2">
-            Upload Foto Galeri Kegiatan
-          </label>
-          <p className="text-xs text-gray-500 mb-3">Minimal foto yang diupload adalah 1!</p>
+          <label className="block text-sm text-[#047DD2] font-medium mb-1">Tanggal Kegiatan</label>
+          <input
+            type="date"
+            value={tanggal}
+            onChange={(e) => setTanggal(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
 
-          <div className="flex gap-3 flex-wrap">
-            {images.map((img, index) => (
+        <div className="mb-4">
+          <label className="block text-sm text-[#047DD2] font-medium mb-2">Upload Foto Galeri</label>
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3">
+            {photos.map((photo, idx) => (
               <div
-                key={index}
-                className="relative w-32 h-32 border border-gray-300 rounded-xl overflow-hidden flex items-center justify-center"
+                key={idx}
+                className="relative w-28 h-28 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center cursor-pointer hover:border-blue-400"
+                onClick={() => document.getElementById(`fileInput-${idx}`).click()}
               >
-                <img src={img} alt={`img-${index}`} className="object-cover w-full h-full" />
-
-                {/* Tombol Hapus */}
-                <button
-                  onClick={() => handleDelete(index)}
-                  className="absolute bottom-2 right-2 bg-white p-1 rounded-full shadow"
-                >
-                  <FaTrashAlt className="text-red-500" />
-                </button>
-
-                {/* Tombol Edit */}
-                <label className="absolute bottom-2 left-2 bg-white p-1 rounded-full shadow cursor-pointer">
-                  <FaEdit className="text-blue-500" />
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => handleEdit(index, e)}
-                    className="hidden"
-                  />
-                </label>
+                {photo.preview ? (
+                  <>
+                    <img src={photo.preview} alt={`Preview ${idx}`} className="w-full h-full object-cover rounded-xl" />
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); handleRemovePhoto(idx); }}
+                      className="absolute top-1 right-1 bg-white text-red-500 font-bold rounded-full px-1 shadow"
+                    >
+                      ✕
+                    </button>
+                  </>
+                ) : (
+                  <span className="text-gray-400 text-xs text-center px-2">Klik untuk pilih foto</span>
+                )}
+                <input type="file" id={`fileInput-${idx}`} accept="image/*" className="hidden" onChange={(e) => handlePhotoChange(e, idx)} />
               </div>
             ))}
 
-            {/* Input Upload */}
-            <label className="w-32 h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center cursor-pointer">
-              <span className="text-gray-400 text-2xl">+</span>
-              <input type="file" accept="image/*" multiple onChange={handleUpload} className="hidden" />
-            </label>
+            <button
+              type="button"
+              onClick={handleAddPhotoBox}
+              className="w-28 h-28 border-2 border-dashed border-blue-300 rounded-xl flex flex-col items-center justify-center text-blue-400 hover:bg-blue-50"
+            >
+              <span className="text-2xl">+</span>
+              <span className="text-xs mt-1">Tambah</span>
+            </button>
           </div>
         </div>
 
-        {/* Tombol Simpan & Batal */}
         <div className="mt-6 flex gap-3">
-          <button
-            onClick={onBatal}
-            className="px-6 py-2 bg-gray-300 text-black rounded-full hover:bg-gray-400"
-          >
-            Batal
-          </button>
-          <button
-            onClick={handleSave}
-            className="px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600"
-          >
-            Simpan
-          </button>
+          <button onClick={onBatal} className="px-6 py-2 bg-gray-300 text-black rounded-full hover:bg-gray-400">Batal</button>
+          <button onClick={handleSubmit} className="px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">Simpan</button>
         </div>
       </div>
     </NavbarSidebar>
