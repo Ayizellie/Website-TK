@@ -19,14 +19,18 @@ const LoginPage = () => {
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/auth/login', formData);
 
-      console.log('Login berhasil:', response.data);
-
       // simpan token dan user
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
-      // arahkan sesuai role
-      if (response.data.user.role === 'admin') {
+      const roleResponse = await axios.get('http://127.0.0.1:8000/api/user', {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${response.data.token}`
+        }
+      });
+
+      if (roleResponse.data.role === 'admin') {
         window.location.href = '/admin/dashboard';
       } else {
         window.location.href = '/dashboard';
