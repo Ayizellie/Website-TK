@@ -1,10 +1,95 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { HiArrowLeft, HiPencil, HiLogout } from "react-icons/hi";
 import { FaLock } from "react-icons/fa";
 import { EyeOff, EyeIcon } from "lucide-react";
 
 const HalamanProfile = () => {
-  const [showPassword, setShowPassword] = useState(false); // state untuk toggle password
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await axios.get("http://127.0.0.1:8000/api/user", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        setFormData({
+          name: res.data.name,
+          email: res.data.email,
+          password: "",
+          password_confirmation: "",
+        });
+      } catch (err) {
+        console.error("Gagal ambil profil:", err);
+        alert("Gagal memuat data profil");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, [token]);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.put(
+        "http://127.0.0.1:8000/api/auth/profile",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      alert("Profil berhasil diperbarui!");
+      setFormData({
+        ...formData,
+        password: "",
+        password_confirmation: "",
+      });
+    } catch (err) {
+      console.error(err);
+      if (err.response?.status === 422) {
+        alert("Validasi gagal. Pastikan semua data benar.");
+      } else {
+        alert("Gagal memperbarui profil.");
+      }
+    }
+  };
+
+  // Logout handler
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen text-gray-600">
+        Memuat profil...
+      </div>
+    );
+  }
 
   return (
     <div className="w-full min-h-screen bg-white p-6">
@@ -29,39 +114,47 @@ const HalamanProfile = () => {
           </button>
 
           <div className="flex flex-col gap-6 w-full">
-            <button className="flex items-center gap-3 bg-white text-black px-4 py-2 rounded-full shadow">
+            <button
+              onClick={() => window.scrollTo({ top: 500, behavior: "smooth" })}
+              className="flex items-center gap-3 bg-white text-black px-4 py-2 rounded-full shadow"
+            >
               <HiPencil className="text-lg" />
               <span>Edit Profil</span>
             </button>
 
-            <button className="flex items-center gap-3 bg-white text-black px-4 py-2 rounded-full shadow">
+            <button
+              onClick={() => window.scrollTo({ top: 500, behavior: "smooth" })}
+              className="flex items-center gap-3 bg-white text-black px-4 py-2 rounded-full shadow"
+            >
               <FaLock className="text-lg" />
               <span>Ubah Password</span>
             </button>
 
-            <button className="flex items-center gap-3 bg-white text-black px-4 py-2 rounded-full shadow">
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-3 bg-white text-black px-4 py-2 rounded-full shadow"
+            >
               <HiLogout className="text-lg" />
               <span>Logout</span>
             </button>
           </div>
         </div>
 
-        {/* Konten Profil */}
         <div className="flex-1 max-w-xl">
-          {/* Avatar */}
           <div className="flex justify-center mb-8">
             <div className="w-24 h-24 rounded-full bg-blue-900 flex items-center justify-center text-white text-xl font-bold">
-              ZE
+              {formData.name ? formData.name[0].toUpperCase() : "U"}
             </div>
           </div>
 
-          {/* Form */}
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-black font-medium mb-1">Username</label>
+              <label className="block text-black font-medium mb-1">Nama</label>
               <input
                 type="text"
-                defaultValue="Zellie Lie"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-sky-400"
               />
             </div>
@@ -70,17 +163,24 @@ const HalamanProfile = () => {
               <label className="block text-black font-medium mb-1">Email</label>
               <input
                 type="email"
-                defaultValue="ZellieLie@gmail.com"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-sky-400"
               />
             </div>
 
             <div>
-              <label className="block text-black font-medium mb-1">Password</label>
+              <label className="block text-black font-medium mb-1">
+                Password Baru (opsional)
+              </label>
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"} // toggle password
-                  defaultValue="zellie"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Biarkan kosong jika tidak ingin mengganti"
                   className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-sky-400"
                 />
                 <span
@@ -91,6 +191,27 @@ const HalamanProfile = () => {
                 </span>
               </div>
             </div>
+
+            <div>
+              <label className="block text-black font-medium mb-1">
+                Konfirmasi Password
+              </label>
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password_confirmation"
+                value={formData.password_confirmation}
+                onChange={handleChange}
+                placeholder="Ulangi password baru"
+                className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-sky-400"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="bg-[#6FBFF2] text-white font-semibold px-6 py-2 rounded-full shadow hover:bg-[#509fda] transition"
+            >
+              Simpan Perubahan
+            </button>
           </form>
         </div>
       </div>
