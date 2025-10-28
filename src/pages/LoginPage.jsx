@@ -95,7 +95,7 @@ const LoginPage = () => {
         </div>
 
         <div className="text-right text-sm mb-4">
-          <a href="#" className="text-blue-500 hover:underline">Lupa Password?</a>
+          <a href="/forgot-password" className="text-blue-500 hover:underline">Lupa Password?</a>
         </div>
 
         <Button type="submit">Masuk</Button>

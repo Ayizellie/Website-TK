@@ -21,6 +21,8 @@ import VerificationPage from './pages/VerificationPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HalamanProfile from './components/halamanprofile/HalamanProfile';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import './App.css';
 
 function App() {
@@ -48,7 +50,9 @@ function App() {
     '/verifikasi-ppdb': <VerificationPage />,
     '/login': <LoginPage />,
     '/register': <RegisterPage />,
-    '/profil':<HalamanProfile/>
+    '/profil':<HalamanProfile/>,
+    '/forgot-password': <ForgotPassword />,
+    '/reset-password': <ResetPassword />,
   };
 
   const PageComponent = routes[path] || <LandingPage />;
