@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const BlogBerita = () => {
   const [dataBerita, setDataBerita] = useState([]);
   const [loading, setLoading] = useState(true);
-  const BASE_URL = "http://127.0.0.1:8000/api/news";
+  const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/news`;
 
   useEffect(() => {
     const fetchBerita = async () => {
@@ -26,7 +26,7 @@ const BlogBerita = () => {
     Swal.fire({
       title: `<strong style="color:#047DD2;">${item.title}</strong>`,
       html: `
-        <img src="http://127.0.0.1:8000/storage/${item.thumbnail}" 
+        <img src="${import.meta.env.VITE_STORAGE_BASE_URL}/${item.thumbnail}" 
              alt="${item.title}" 
              class="w-full h-48 object-cover rounded-lg mb-4"/>
         <div class="text-gray-700 text-sm text-justify whitespace-pre-line">${item.content}</div>
@@ -80,7 +80,7 @@ const BlogBerita = () => {
               className="bg-white border rounded-2xl shadow-md overflow-hidden"
             >
               <img
-                src={`http://127.0.0.1:8000/storage/${berita.thumbnail}`}
+                src={`${import.meta.env.VITE_STORAGE_BASE_URL}/${berita.thumbnail}`}
                 alt={berita.title}
                 className="w-full h-48 object-cover"
                 onError={(e) => (e.target.src = "/no-image.jpg")}

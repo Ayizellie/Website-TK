@@ -6,7 +6,7 @@ const DaftarBerita = ({ data, onSimpan, onBatal }) => {
   const [title, setTitle] = useState(data?.title || "");
   const [content, setContent] = useState(data?.content || "");
   const [thumbnail, setThumbnail] = useState(data?.thumbnail || null);
-  const [preview, setPreview] = useState(data?.thumbnail ? `http://127.0.0.1:8000/storage/${data.thumbnail}` : null);
+  const [preview, setPreview] = useState(data?.thumbnail ? `${import.meta.env.VITE_STORAGE_BASE_URL}/${data.thumbnail}` : null);
 
   const handleUpload = (e) => {
     const file = e.target.files[0];

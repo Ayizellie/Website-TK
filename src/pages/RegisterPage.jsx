@@ -31,7 +31,7 @@ const RegisterPage = () => {
     };
 
     try {
-        const response = await axios.post('http://127.0.0.1:8000/api/auth/register', dataToSend);
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, dataToSend);
         console.log('Register berhasil:', response.data);
         alert('Akun berhasil dibuat 💙');
         window.location.href = '/login';

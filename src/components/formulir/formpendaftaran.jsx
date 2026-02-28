@@ -98,7 +98,7 @@ const FormulirPendaftaran = () => {
       if (form.dokumenAL) data.append("file_akta", form.dokumenAL);
       if (form.foto) data.append("file_foto", form.foto);
 
-      const res = await axios.post("http://127.0.0.1:8000/api/admission", data, {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/admission`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

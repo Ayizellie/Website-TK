@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     setMessage("");
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/auth/send-otp", {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/send-otp`, {
         email,
       });
       setMessage(res.data.message);

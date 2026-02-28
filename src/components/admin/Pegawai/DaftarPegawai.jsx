@@ -34,7 +34,7 @@ const DaftarPegawai = () => {
 
   // Axios instance dengan token
   const api = axios.create({
-    baseURL: "http://127.0.0.1:8000/api",
+    baseURL: import.meta.env.VITE_API_BASE_URL,
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const DaftarPegawai = () => {
   const fetchTeachers = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://127.0.0.1:8000/api/teachers");
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/teachers`);
 
       if (response.data && response.data.data) {
         setPegawaiData(response.data.data);

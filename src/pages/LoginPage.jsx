@@ -17,13 +17,13 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/auth/login', formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, formData);
 
       // simpan token dan user
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
-      const roleResponse = await axios.get('http://127.0.0.1:8000/api/user', {
+      const roleResponse = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/user`, {
         headers: {
           'Accept': 'application/json',
           'Authorization': `Bearer ${response.data.token}`

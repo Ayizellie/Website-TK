@@ -22,7 +22,7 @@ const AkunAdmin = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        "http://127.0.0.1:8000/api/admin/update-profile",
+        `${import.meta.env.VITE_API_BASE_URL}/admin/update-profile`,
         { name: newName },
         {
           headers: {

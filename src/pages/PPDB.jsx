@@ -15,7 +15,7 @@ export default function PPDB() {
   useEffect(() => {
     const fetchPPDBStatus = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/ppdb-setting");
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/ppdb-setting`);
         if (res.data.data) {
           setPpdbStatus(res.data.data.status);
           setPpdbMessage(res.data.data.message || "");

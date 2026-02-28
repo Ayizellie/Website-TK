@@ -10,7 +10,7 @@ export default function KelolaBerita() {
   const [selectedBerita, setSelectedBerita] = useState(null);
 
   // base URL backend kamu
-  const BASE_URL = "http://127.0.0.1:8000/api/news"; // ubah sesuai port backend
+  const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/news`; // ubah sesuai port backend
 
   // 🧠 ambil semua berita pas komponen pertama kali jalan
   useEffect(() => {

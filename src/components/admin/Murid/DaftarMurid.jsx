@@ -13,7 +13,7 @@ const DaftarMurid = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token"); // token admin
-        const res = await axios.get("http://127.0.0.1:8000/api/admission", {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/admission`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const diterima = res.data.filter(
@@ -106,21 +106,21 @@ const DaftarMurid = () => {
                     <td className="px-4 py-4 hidden sm:table-cell">{murid.paud || "-"}</td>
                     <td className="px-4 py-4 hidden sm:table-cell">
                       {murid.file_kk ? (
-                        <a href={`http://127.0.0.1:8000/storage/${murid.file_kk}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                        <a href={`${import.meta.env.VITE_STORAGE_BASE_URL}/${murid.file_kk}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
                           Lihat
                         </a>
                       ) : "-"}
                     </td>
                     <td className="px-4 py-4 hidden sm:table-cell">
                       {murid.file_akta ? (
-                        <a href={`http://127.0.0.1:8000/storage/${murid.file_akta}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                        <a href={`${import.meta.env.VITE_STORAGE_BASE_URL}/${murid.file_akta}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
                           Lihat
                         </a>
                       ) : "-"}
                     </td>
                     <td className="px-4 py-4 hidden sm:table-cell">
                       {murid.file_foto ? (
-                        <a href={`http://127.0.0.1:8000/storage/${murid.file_foto}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                        <a href={`${import.meta.env.VITE_STORAGE_BASE_URL}/${murid.file_foto}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
                           Lihat
                         </a>
                       ) : "-"}

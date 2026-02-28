@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   const [totalGuru, setTotalGuru] = useState(0);
   const totalPrestasi = 0; // tetap 0
 
-  const BASE_URL = "http://127.0.0.1:8000/api";
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const token = localStorage.getItem("token");
 
   // 🔹 Ambil data guru

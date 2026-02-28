@@ -23,7 +23,7 @@ const ResetPassword = () => {
     setMessage("");
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/auth/forgot-password", {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/forgot-password`, {
         token,
         password,
         password_confirmation: passwordConfirmation,

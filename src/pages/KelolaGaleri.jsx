@@ -10,7 +10,7 @@ export default function KelolaGaleri() {
   const [selectedGaleri, setSelectedGaleri] = useState(null);
 
   const token = localStorage.getItem("token");
-  const API_URL = "http://127.0.0.1:8000/api/gallery";
+  const API_URL = `${import.meta.env.VITE_API_BASE_URL}/gallery`;
 
   // 🔹 Ambil galeri dari backend
   const fetchGaleri = async () => {

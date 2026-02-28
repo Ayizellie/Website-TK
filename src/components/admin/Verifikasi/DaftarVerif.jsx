@@ -11,7 +11,8 @@ import {
 import { FaRectangleXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+const STORAGE_URL = import.meta.env.VITE_STORAGE_BASE_URL;
 
 const DaftarVerif = () => {
   const [pendaftar, setPendaftar] = useState([]);
@@ -24,7 +25,7 @@ const DaftarVerif = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`${API_URL}/api/admission`, {
+      const res = await axios.get(`${API_URL}/admission`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -73,7 +74,7 @@ const DaftarVerif = () => {
   const handleStatusChange = async (id, newStatus) => {
     try {
       await axios.put(
-        `${API_URL}/api/admission/${id}`,
+        `${API_URL}/admission/${id}`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
@@ -255,9 +256,9 @@ const DaftarVerif = () => {
                           <p><strong>No. Wali:</strong> {item.guardian_phone || "-"}</p>
                           <p><strong>PAUD:</strong> {item.paud || "-"}</p>
                           <div className="flex gap-4 mt-2">
-                            {item.file_kk && <a href={`${API_URL}/storage/${item.file_kk}`} target="_blank" rel="noreferrer" className="text-blue-600 underline">Lihat KK</a>}
-                            {item.file_akta && <a href={`${API_URL}/storage/${item.file_akta}`} target="_blank" rel="noreferrer" className="text-blue-600 underline">Lihat Akta</a>}
-                            {item.file_foto && <a href={`${API_URL}/storage/${item.file_foto}`} target="_blank" rel="noreferrer" className="text-blue-600 underline">Lihat Foto</a>}
+                            {item.file_kk && <a href={`${STORAGE_URL}/${item.file_kk}`} target="_blank" rel="noreferrer" className="text-blue-600 underline">Lihat KK</a>}
+                            {item.file_akta && <a href={`${STORAGE_URL}/${item.file_akta}`} target="_blank" rel="noreferrer" className="text-blue-600 underline">Lihat Akta</a>}
+                            {item.file_foto && <a href={`${STORAGE_URL}/${item.file_foto}`} target="_blank" rel="noreferrer" className="text-blue-600 underline">Lihat Foto</a>}
                           </div>
                         </div>
                       </td>

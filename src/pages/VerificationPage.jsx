@@ -23,7 +23,7 @@ const VerificationPage = () => {
     try {
       // Panggil endpoint Laravel BE, langsung pakai nomor pendaftaran
       const res = await axios.post(
-        `http://127.0.0.1:8000/api/admission/${nomor}/check`
+        `${import.meta.env.VITE_API_BASE_URL}/admission/${nomor}/check`
       );
 
       // Ambil status dari backend

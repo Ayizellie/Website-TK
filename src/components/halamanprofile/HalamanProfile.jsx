@@ -19,7 +19,7 @@ const HalamanProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/user", {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/user`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -51,7 +51,7 @@ const HalamanProfile = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        "http://127.0.0.1:8000/api/auth/profile",
+        `${import.meta.env.VITE_API_BASE_URL}/auth/profile`,
         formData,
         {
           headers: {

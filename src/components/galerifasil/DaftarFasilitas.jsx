@@ -7,7 +7,7 @@ const DaftarFasilitas = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const apiBase = "http://127.0.0.1:8000/api/facilities";
+  const apiBase = `${import.meta.env.VITE_API_BASE_URL}/facilities`;
 
   // Ambil data fasilitas dari backend
   const fetchFasilitas = async () => {
@@ -72,7 +72,7 @@ const DaftarFasilitas = () => {
                   <img
                     src={
                       item.path
-                        ? `http://127.0.0.1:8000/storage/${item.path}`
+                        ? `${import.meta.env.VITE_STORAGE_BASE_URL}/${item.path}`
                         : "https://via.placeholder.com/400x160?text=No+Image"
                     }
                     alt={item.name || "Fasilitas"}

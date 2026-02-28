@@ -9,7 +9,7 @@ const FormGaleriKegiatan = ({ data, onSimpan, onBatal }) => {
   const [tanggal, setTanggal] = useState("");
   const [photos, setPhotos] = useState([]);
   const token = localStorage.getItem("token");
-  const API_URL = "http://127.0.0.1:8000/api/gallery";
+  const API_URL = `${import.meta.env.VITE_API_BASE_URL}/gallery`;
 
   // jika edit → isi field
   useEffect(() => {
@@ -42,7 +42,7 @@ const FormGaleriKegiatan = ({ data, onSimpan, onBatal }) => {
       setPhotos(
         data.images?.map((img) => ({
           file: null,
-          preview: `http://127.0.0.1:8000/storage/${img.path}`,
+          preview: `${import.meta.env.VITE_STORAGE_BASE_URL}/${img.path}`,
           path: img.path,
         })) || []
       );

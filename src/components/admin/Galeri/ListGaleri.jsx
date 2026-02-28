@@ -26,7 +26,7 @@ const ListGaleri = ({ dataGaleri, onTambah, onEdit, onHapus }) => {
                <img
                   src={
                     item.images?.[0]?.path
-                      ? `http://127.0.0.1:8000/storage/${item.images[0].path}?t=${new Date().getTime()}`
+                      ? `${import.meta.env.VITE_STORAGE_BASE_URL}/${item.images[0].path}?t=${new Date().getTime()}`
                       : "/images/placeholder.jpg"
                   }
                   alt={item.name}

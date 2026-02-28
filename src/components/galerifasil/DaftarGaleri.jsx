@@ -11,7 +11,7 @@ const DaftarGaleri = () => {
   useEffect(() => {
     const fetchGaleri = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/gallery");
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/gallery`);
         setGaleri(res.data.galeri);
       } catch (error) {
         console.error("Gagal mengambil data galeri:", error);
@@ -65,7 +65,7 @@ const DaftarGaleri = () => {
                   activity.images.map((img) => (
                     <img
                       key={img.id}
-                      src={`http://127.0.0.1:8000/storage/${img.path}`}
+                      src={`${import.meta.env.VITE_STORAGE_BASE_URL}/${img.path}`}
                       className="aspect-[4/3] w-full rounded-3xl shadow-md object-cover"
                       alt={activity.name}
                     />

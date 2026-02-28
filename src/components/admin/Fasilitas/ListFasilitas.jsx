@@ -31,7 +31,7 @@ const ListFasilitas = ({ dataFasilitas, onTambah, onEdit, onHapus }) => {
                 <img
                   src={
                     item.path
-                      ? `http://127.0.0.1:8000/storage/${item.path}`
+                      ? `${import.meta.env.VITE_STORAGE_BASE_URL}/${item.path}`
                       : "https://via.placeholder.com/400x160?text=No+Image"
                   }
                   alt={item.name || "Fasilitas"}

@@ -11,7 +11,7 @@ const DetailBerita = () => {
   useEffect(() => {
     const fetchBerita = async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/api/news/${id}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/news/${id}`);
         setBerita(res.data.data); // sesuaikan dengan struktur respons API
       } catch (err) {
         console.error("Gagal ambil berita:", err);
@@ -56,7 +56,7 @@ const DetailBerita = () => {
           {new Date(berita.created_at).toLocaleDateString("id-ID")}
         </p>
         <img
-          src={`http://127.0.0.1:8000/storage/${berita.thumbnail}`}
+          src={`${import.meta.env.VITE_STORAGE_BASE_URL}/${berita.thumbnail}`}
           alt={berita.title}
           className="w-full rounded-xl shadow-lg mb-8"
           onError={(e) => (e.target.src = "/no-image.jpg")}

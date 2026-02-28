@@ -11,7 +11,7 @@ const FormFasilitas = ({ data, onSimpan, onBatal }) => {
   useEffect(() => {
     if (data) {
       setNama(data.name || "");
-      setFoto(data.path ? `http://127.0.0.1:8000/storage/${data.path}` : "");
+      setFoto(data.path ? `${import.meta.env.VITE_STORAGE_BASE_URL}/${data.path}` : "");
       setFotoFile(null);
     } else {
       setNama("");

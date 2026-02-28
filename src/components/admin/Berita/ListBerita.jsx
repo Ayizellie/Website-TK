@@ -25,7 +25,7 @@ const ListBerita = ({ dataBerita, onTambah, onEdit, onHapus }) => {
     Swal.fire({
       title: `<strong style="color:#047DD2;">${item.title}</strong>`,
       html: `
-        <img src="http://127.0.0.1:8000/storage/${item.thumbnail}" 
+        <img src="${import.meta.env.VITE_STORAGE_BASE_URL}/${item.thumbnail}" 
             alt="${item.title}" 
             class="w-full h-48 object-cover rounded-lg mb-4"/>
         <div class="text-gray-700 text-sm text-justify whitespace-pre-line">${item.content}</div>
@@ -83,7 +83,7 @@ const ListBerita = ({ dataBerita, onTambah, onEdit, onHapus }) => {
               className="flex flex-col sm:flex-row border rounded-xl p-4 bg-white shadow hover:shadow-md transition"
             >
               <img
-                src={`http://127.0.0.1:8000/storage/${item.thumbnail}`}
+                src={`${import.meta.env.VITE_STORAGE_BASE_URL}/${item.thumbnail}`}
                 alt={item.title}
                 className="w-full sm:w-32 h-48 sm:h-24 object-cover rounded-lg mb-4 sm:mb-0 sm:mr-4"
                 onError={(e) => (e.target.src = "/no-image.jpg")} // fallback jika gambar rusak

@@ -9,7 +9,7 @@ export default function KelolaFasilitas() {
   const [fasilitas, setFasilitas] = useState([]);
   const [selectedFasilitas, setSelectedFasilitas] = useState(null);
 
-  const apiBase = "http://127.0.0.1:8000/api/facilities";
+  const apiBase = `${import.meta.env.VITE_API_BASE_URL}/facilities`;
   const token = localStorage.getItem("token");
 
   // Ambil data fasilitas
