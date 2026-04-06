@@ -7,9 +7,9 @@ import {
 const Sidebar = ({ isSidebarOpen }) => {
   return (
     <div className={`bg-[#6FBFF2] text-white transition-all duration-300 ${isSidebarOpen ? 'w-64' : 'w-16'} h-screen`}>
-      <div className="flex items-center justify-center h-16 border-b border-blue-700">
+      <div className="flex items-center justify-center h-16">
         <h1 className={`text-xl font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>
-          LOGO
+        
         </h1>
       </div>
 
