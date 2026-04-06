@@ -35,7 +35,7 @@ const TentangKami = () => {
               6.	Mengembangkan perilaku yang bertanggung jawab dan mandiri.
             </p>
             <p className="text-gray-700 text-start mb-4">
-              7.	Menanakan sikap sportivitas dan mengakui kelebihan lawan.
+              7.	Menanamkan sikap sportivitas dan mengakui kelebihan lawan.
             </p>
             <p className="text-gray-700 text-start mb-4">
               8.	Mengembangkan kemampuan dasar anak melalui kegiatan pengembangan aspek bahasa, kognitif, fisik motorik dan seni.

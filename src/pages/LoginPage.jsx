@@ -46,7 +46,7 @@ const LoginPage = () => {
   };
 
   return (
-    <AuthLayout imageSrc="/images/galeri4.jpg">
+    <AuthLayout imageSrc="/images/gambarr.png">
       {/* Tombol panah balik */}
       <button
         onClick={handleBack}
@@ -68,7 +68,7 @@ const LoginPage = () => {
           label="Email"
           type="email"
           name="email"
-          placeholder="cth: ayicomel@gmail.com"
+          placeholder="cth: username@gmail.com"
           value={formData.email}
           onChange={handleChange}
         />

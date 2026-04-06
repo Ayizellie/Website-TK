@@ -9,14 +9,14 @@ import "./galeri-style.css"; // Tetap import dari folder yang sama
 
 const GaleriKegiatan = () => {
   const images = [
-    "/images/galeri1.jpg",
-    "/images/galeri2.jpg",
-    "/images/galeri3.jpg",
-    "/images/galeri4.jpg",
-    "/images/galeri5.jpg",
-    "/images/galeri6.jpg",
-    "/images/galeri7.jpg",
-    "/images/galeri8.jpg",
+    "/images/prestasi1.png",
+    "/images/prest7.png",
+    "/images/prest4.png",
+    "/images/prest8.png",
+    "/images/prest3.png",
+    "/images/prest6.png",
+    "/images/prest5.png",
+    "/images/prest2.png",
   ];
 
   return (

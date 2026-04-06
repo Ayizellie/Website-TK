@@ -28,7 +28,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-4">
           <img src="/images/logo1.png" alt="Logo 1" className="h-12 w-auto object-contain" />
-          <img src="/images/logo2.png" alt="Logo 2" className="h-12 w-auto object-contain" />
+          <img src="/images/logo TK.png" alt="Logo 2" className="h-12 w-auto object-contain" />
         </div>
 
         {/* Menu Tengah */}

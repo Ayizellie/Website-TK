@@ -10,7 +10,7 @@ const pegawai = {
     {
       nama: "Wahyu Laili Syafa’ah, S.Pd",
       jabatan: "Tata Usaha/Operator ARKAS",
-      foto: "/images/profil.png",
+      foto: "/images/bu wahyu.jpeg",
     },
     {
       nama: "Ririn Maghfiroh, S.Pd., Gr",

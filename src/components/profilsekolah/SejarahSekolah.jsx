@@ -27,7 +27,7 @@ const SejarahSekolah = () => {
         <div className="relative flex flex-col lg:flex-row items-center bg-white rounded-2xl shadow-md p-4 lg:p-8 overflow-visible gap-6">
           <div className="relative w-full lg:w-auto lg:ml-[-40px]">
             <img
-              src="/images/galeri1.jpg"
+              src="/images/sejarah1.png"
               alt="Foto Sejarah 1"
               className="w-full lg:w-[480px] h-[300px] object-cover rounded-xl shadow-lg"
             />
@@ -52,7 +52,7 @@ const SejarahSekolah = () => {
         <div className="relative flex flex-col lg:flex-row-reverse items-center bg-blue-100 rounded-2xl shadow-md p-4 lg:p-8 overflow-visible gap-6">
           <div className="relative w-full lg:w-auto lg:mr-[-40px]">
             <img
-              src="/images/galeri1.jpg"
+              src="/images/sejarah2.png"
               alt="Foto Sejarah 2"
               className="w-full lg:w-[480px] h-[300px] object-cover rounded-xl shadow-lg"
             />

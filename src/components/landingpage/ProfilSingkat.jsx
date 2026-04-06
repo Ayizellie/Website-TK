@@ -7,7 +7,7 @@ const ProfilSingkat = () => {
         {/* Gambar dengan border & rounded kanan atas dan bawah */}
         <div className="border-[3px] border-pink-300 rounded-tr-[50px] rounded-br-[50px] p-1 w-full md:w-1/2">
           <img
-            src="/images/landingpage.png" // Ganti sesuai path kamu
+            src="/images/gambar1.png" // Ganti sesuai path kamu
             alt="TK Negeri 1 Sangatta Utara"
             className="w-full h-auto object-cover rounded-tr-[40px] rounded-br-[40px]"
           />

@@ -98,7 +98,7 @@ const Kurikulum = () => {
                 {/* Proyek */}
                 <div className="relative flex flex-col lg:flex-row-reverse items-center gap-10 px-10 py-10">
                     <div className="w-full lg:w-auto lg:mr-[-40px]">
-                        <img src="/images/galeri5.jpg" alt="Foto Kurikulum 2" className="w-full lg:w-[480px] h-[300px] object-cover rounded-xl shadow-lg"/>
+                        <img src="/images/gambar4.png" alt="Foto Kurikulum 2" className="w-full lg:w-[480px] h-[300px] object-cover rounded-xl shadow-lg"/>
                     </div>
                     <div className="flex-1 text-left bg-[#3C80C7] bg-opacity-25 rounded-2xl shadow-md p-4 lg:p-8">
                         <p className="text-sm font-semibold text-black px-5 mb-3">Pembelajaran Proyek</p>
@@ -113,7 +113,7 @@ const Kurikulum = () => {
 
                 <div className="relative flex flex-col lg:flex-row items-center gap-10 px-10 py-10"> 
                     <div className="w-full lg:w-auto lg:ml-[-40px]"> 
-                        <img src="/images/galeri8.jpg" alt="Foto Kurikulum 3" className="w-full lg:w-[480px] h-[300px] object-cover rounded-xl shadow-lg"/> 
+                        <img src="/images/ekstrakurikuler.png" alt="Foto Kurikulum 3" className="w-full lg:w-[480px] h-[300px] object-cover rounded-xl shadow-lg"/> 
                         </div> 
                         <div className="flex-1 text-left bg-[#3C80C7] bg-opacity-25 rounded-2xl shadow-md p-4 lg:p-8"> 
                             <p className="text-sm font-semibold text-black px-5 mb-3"> Pembelajaran Ekstrakurikuler </p> 

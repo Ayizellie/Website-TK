@@ -6,7 +6,7 @@ const LogoSekolah = () => {
       <h3 className="text-blue-800 font-bold text-2xl mb-6">LOGO</h3>
       <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center gap-6">
         <img
-          src="/images/logo1.png"
+          src="/images/logo TK.png"
           alt="Logo TK"
           className="w-28 h-28 object-contain"
         />

@@ -17,7 +17,7 @@ const Fasilitas = () => {
             <div className="w-full md:w-[360px] lg:w-[260px] ml-4 md:ml-6">
               <div className="border-[3px] border-blue-300 rounded-bl-[95px] rounded-br-[95px] p-1 bg-white">
                 <img
-                  src="/images/galeri1.jpg"
+                  src="/images/gambaar.png"
                   alt="Fasilitas TK"
                   className="w-full h-full object-cover rounded-bl-[95px] rounded-br-[95px]"
                 />

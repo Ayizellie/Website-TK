@@ -96,7 +96,7 @@ const HalamanProfile = () => {
       {/* Tombol kembali */}
       <a
         href="/"
-        className="flex items-center text-blue-800 font-semibold mt-24 mb-5"
+        className="flex items-center text-blue-800 font-semibold mb-5"
       >
         <HiArrowLeft className="mr-2 text-3xl" />
       </a>

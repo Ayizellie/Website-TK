@@ -25,7 +25,7 @@ const StrukturOrganisasi = () => {
       <div className="bg-blue-100 p-4 md:p-6 rounded-2xl shadow-md">
         <div className="bg-white p-3 md:p-6 rounded-xl shadow-sm">
           <img
-            src="/images/organisasi.png"
+            src="/images/struktur.jpeg"
             alt="Struktur Organisasi"
             className="max-w-3xl mx-auto w-full h-auto object-contain rounded-md"
           />
