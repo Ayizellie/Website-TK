@@ -49,13 +49,13 @@ const BlogBerita = () => {
   }
 
   return (
-    <div className="relative py-16 px-4 md:px-20 bg-white">
+    <div className="relative py-28 px-4 md:px-20 bg-white">
       <div className="mb-6 mt-6">
         <a
           href="/"
           className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
         >
-          <HiArrowLeft className="mr-1 text-2xl" />
+          <HiArrowLeft className="mr-2 text-3xl" />
         </a>
       </div>
 

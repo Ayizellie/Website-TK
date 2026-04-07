@@ -39,10 +39,10 @@ const DaftarFasilitas = () => {
   };
 
   return (
-    <div className="relative w-full bg-white pb-16">
+    <div className="w-full relative py-28 px-4 md:px-20 bg-white">
       {/* Tombol back */}
-      <div className="px-4 sm:px-6 lg:px-20 space-y-10 mx-auto max-w-screen-xl">
-        <a href="/" className="flex items-center text-blue-800 font-semibold mt-24">
+      <div className="mb-6 mt-6">
+        <a href="/" className="inline-flex items-center text-blue-800 hover:text-blue-800 text-sm font-medium">
           <HiArrowLeft className="mr-2 text-3xl" />
         </a>
       </div>
@@ -59,7 +59,7 @@ const DaftarFasilitas = () => {
       <img
         src="/images/motto.png"
         alt="Motto Sekolah"
-        className="absolute top-3 right-10 w-32 md:w-22 lg:w-30"
+        className="absolute top-28 right-10 w-32 md:w-22 lg:w-30"
       />
 
       {/* Grid fasilitas */}

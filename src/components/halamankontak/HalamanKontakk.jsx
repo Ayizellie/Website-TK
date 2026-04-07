@@ -7,11 +7,11 @@ const HalamanKontakk = () => {
   return (
     <>
     <Navbar />
-    <div className="w-full bg-white pb-16">
-      <div className="px-4 sm:px-6 lg:px-20 space-y-10 mx-auto max-w-screen-xl">
+    <div className="w-full relative py-26 px-4 md:px-20 bg-white">
+      <div className="mb-6 mt-6">
         <a
         href="/"
-        className="flex items-center text-blue-800 font-semibold mt-24">
+        className="inline-flex items-center text-blue-800 font-semibold mt-24">
         <HiArrowLeft className="mr-2 text-3xl" />
         </a>
       </div>

@@ -3,7 +3,7 @@ import { HiArrowLeft } from "react-icons/hi";
 
 const SejarahSekolah = () => {
   return (
-    <div className="w-full bg-white text-left pb-16">
+    <div className="w-full relative py-10 px-6 md:px-20 bg-white">
       {/* Container responsif */}
       <div className="px-6 md:px-10 lg:px-20 space-y-10 mx-auto max-w-full md:max-w-3xl lg:max-w-full">
         {/* Panah kembali */}

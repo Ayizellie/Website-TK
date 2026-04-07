@@ -37,14 +37,14 @@ const DaftarGaleri = () => {
   if (loading) return <p className="text-center mt-10">Memuat galeri...</p>;
 
   return (
-    <div className="w-full bg-white pb-16">
-      <div className="px-4 sm:px-6 lg:px-20 space-y-10 mx-auto max-w-screen-xl">
-        <a href="/" className="flex items-center text-blue-800 font-semibold mt-24">
+    <div className="w-full relative py-28 px-4 md:px-20 bg-white">
+      <div className="mb-6 mt-6">
+        <a href="/" className="inline-flex items-center text-blue-800 hover:text-blue-800 text-sm font-medium">
           <HiArrowLeft className="mr-2 text-3xl" />
         </a>
       </div>
 
-      <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-12">
+      <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-4">
         Galeri Kegiatan
       </h1>
 
