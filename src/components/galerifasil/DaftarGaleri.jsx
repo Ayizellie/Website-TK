@@ -6,7 +6,7 @@ const DaftarGaleri = () => {
   const [galeri, setGaleri] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 10;
 
   useEffect(() => {
     const fetchGaleri = async () => {
