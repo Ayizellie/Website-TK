@@ -36,7 +36,7 @@ const pegawai = {
     },
     {
       nama: "Yessica Simflensia Sihotang, S.Pd",
-      jabatan: "Guru Kelas B4 & IMTAQ KRISTEN",
+      jabatan: "Guru Kelas B4 dan IMTAQ KRISTEN",
       foto: "/images/Yessica.jpg",
     },
     {
@@ -61,7 +61,7 @@ const pegawai = {
     },
     {
       nama: "Marpuah, S.H",
-      jabatan: "Guru Kelas A2 & IMTAQ ISLAM",
+      jabatan: "Guru Kelas A2 dan IMTAQ ISLAM",
       foto: "/images/Marpuah.jpg",
     },
 
