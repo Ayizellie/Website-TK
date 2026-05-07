@@ -36,7 +36,7 @@ const pegawai = {
     },
     {
       nama: "Yessica Simflensia Sihotang, S.Pd",
-      jabatan: "Guru Kelas B1 dan IMTAQ KRISTEN",
+      jabatan: "Guru Kelas B4 dan IMTAQ KRISTEN",
       foto: "/images/Yessica.jpg",
     },
     {
@@ -46,7 +46,7 @@ const pegawai = {
     },
     {
       nama: "Susilowati, S.Pd",
-      jabatan: "Guru Kelompok B2",
+      jabatan: "Guru Kelompok B5",
       foto: "/images/Susilowati.jpg",
     },
     {
@@ -56,7 +56,7 @@ const pegawai = {
     },
     {
       nama: "Masyitta, S.Pd",
-      jabatan: "Guru Kelas B3",
+      jabatan: "Guru Kelas B6",
       foto: "/images/Masyitta.jpg",
     },
     {
