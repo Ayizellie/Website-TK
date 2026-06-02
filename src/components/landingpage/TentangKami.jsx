@@ -7,30 +7,6 @@ const TentangKami = () => {
         <h2 className="text-center text-2xl font-bold text-blue-800 mb-12">
           Tentang Kami
         </h2>
-<div className="bg-white shadow-md rounded-2xl px-4 md:px-6 py-5 max-w-4xl mx-auto mb-12 border border-blue-100">
-  <p className="text-center text-black text-sm md:text-base font-semibold leading-relaxed break-words">
-    Ayo saksikan secara langsung rangkaian acara
-    <br />
-    <span className="text-black">
-      ✨ Pelepasan Anak Didik TK Negeri 1 Sangatta Utara
-      Angkatan Tahun 2025/2026 ✨
-    </span>
-    <br />
-    yang disiarkan secara langsung melalui{" "}
-    <a
-      href="https://www.facebook.com/profile.php?id=100091968307508"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-blue-600 underline hover:text-blue-800"
-    >
-      Tknsatu Sangattautara
-    </a>
-    <br />
-    <span className="text-blue-700 text-xs md:text-sm">
-      #TKN1SangattaUtara #TerbaikMandiriBerprestasi
-    </span>
-  </p>
-</div>
         <div className="flex flex-col md:flex-row justify-center gap-8">
           <div className="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex-1 text-center min-h-[180px]">
             <h3 className="text-lg font-semibold text-blue-700 mb-4">✨ Visi</h3>

@@ -52,9 +52,6 @@ const DetailBerita = () => {
           alt="Motto Sekolah" 
           className="absolute top-24 right-10 w-32 md:w-22 lg:w-30"
         />
-        <p className="text-gray-500 text-sm mb-5">
-          {new Date(berita.created_at).toLocaleDateString("id-ID")}
-        </p>
         <img
           src={`${import.meta.env.VITE_STORAGE_BASE_URL}/${berita.thumbnail}`}
           alt={berita.title}

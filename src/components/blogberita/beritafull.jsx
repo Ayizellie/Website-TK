@@ -89,9 +89,6 @@ const BlogBerita = () => {
                 <h3 className="text-blue-800 font-bold text-base mb-1">
                   {berita.title}
                 </h3>
-                <p className="text-sm text-gray-500 mb-2">
-                  {new Date(berita.created_at).toLocaleDateString("id-ID")}
-                </p>
                 <p className="text-sm text-gray-700 mb-3 line-clamp-3">
                   {berita.content}
                 </p>
