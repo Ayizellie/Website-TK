@@ -15,6 +15,14 @@ import KelolaAkunAdmin from './pages/KelolaAkunAdmin';
 import KelolaGaleri from './pages/KelolaGaleri';
 import KelolaFasilitas from './pages/KelolaFasilitas';
 import KelolaBerita from './pages/KelolaBerita';
+import PPDB from './pages/PPDB';
+import FormulirPendaftaran from './pages/FormulirPendaftaran';
+import VerificationPage from './pages/VerificationPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import HalamanProfile from './components/halamanprofile/HalamanProfile';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import './App.css';
 
 function App() {
@@ -36,7 +44,15 @@ function App() {
     '/admin/akunadmin': <KelolaAkunAdmin />,
     '/admin/kelolagaleri': <KelolaGaleri />,
     '/admin/kelolafasilitas': <KelolaFasilitas/>,
-    '/admin/kelolaberita': <KelolaBerita/>
+    '/admin/kelolaberita': <KelolaBerita/>,
+    '/ppdb': <PPDB />,
+    '/formulir-ppdb': <FormulirPendaftaran />,
+    '/verifikasi-ppdb': <VerificationPage />,
+    '/login': <LoginPage />,
+    '/register': <RegisterPage />,
+    '/profil':<HalamanProfile/>,
+    '/forgot-password': <ForgotPassword />,
+    '/reset-password': <ResetPassword />,
   };
 
   const PageComponent = routes[path] || <LandingPage />;

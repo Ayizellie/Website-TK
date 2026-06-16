@@ -9,14 +9,14 @@ import "./galeri-style.css"; // Tetap import dari folder yang sama
 
 const GaleriKegiatan = () => {
   const images = [
-    "/images/galeri1.jpg",
-    "/images/galeri2.jpg",
-    "/images/galeri3.jpg",
-    "/images/galeri4.jpg",
-    "/images/galeri5.jpg",
-    "/images/galeri6.jpg",
-    "/images/galeri7.jpg",
-    "/images/galeri8.jpg",
+    "/images/prestasi1.png",
+    "/images/prest7.png",
+    "/images/prest4.png",
+    "/images/prest8.png",
+    "/images/prest3.png",
+    "/images/prest6.png",
+    "/images/prest5.png",
+    "/images/prest2.png",
   ];
 
   return (
@@ -26,7 +26,7 @@ const GaleriKegiatan = () => {
         <div className="mb-10">
           <div className="flex justify-center items-center gap-2 mb-3">
             <img src="/images/logo2.png" alt="icon" className="w-6 h-6" />
-            <h2 className="text-2xl font-bold text-blue-800">Galeri Kegiatan</h2>
+            <h2 className="text-2xl font-bold text-blue-800">Prestasi</h2>
           </div>
           <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
             Tidak hanya untuk tempat belajar, TK Negeri 1 juga sebagai tempat yang mewadahi anak-anaknya untuk terus berprestasi dan mengembangkan bakat minatnya.

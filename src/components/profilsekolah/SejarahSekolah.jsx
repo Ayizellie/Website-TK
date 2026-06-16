@@ -3,7 +3,7 @@ import { HiArrowLeft } from "react-icons/hi";
 
 const SejarahSekolah = () => {
   return (
-    <div className="w-full bg-white text-left pb-16">
+    <div className="w-full relative py-10 px-6 md:px-20 bg-white">
       {/* Container responsif */}
       <div className="px-6 md:px-10 lg:px-20 space-y-10 mx-auto max-w-full md:max-w-3xl lg:max-w-full">
         {/* Panah kembali */}
@@ -15,13 +15,19 @@ const SejarahSekolah = () => {
         </a>
 
         {/* Judul */}
-        <h1 className="text-blue-800 font-bold text-2xl mb-2 mt-6">PROFIL SEKOLAH</h1>
+        <h1 className="text-center text-2xl md:text-5xl font-extrabold text-[#047DD2] mb-4">Profil Sekolah</h1>
+        
+        <img
+          src="/images/motto.png"
+          alt="Motto Sekolah"
+          className="absolute top-16 right-10 w-32 md:w-22 lg:w-30"
+        />
 
         {/* Bagian 1 - Putih */}
         <div className="relative flex flex-col lg:flex-row items-center bg-white rounded-2xl shadow-md p-4 lg:p-8 overflow-visible gap-6">
           <div className="relative w-full lg:w-auto lg:ml-[-40px]">
             <img
-              src="/images/galeri1.jpg"
+              src="/images/sejarah1.png"
               alt="Foto Sejarah 1"
               className="w-full lg:w-[480px] h-[300px] object-cover rounded-xl shadow-lg"
             />
@@ -46,7 +52,7 @@ const SejarahSekolah = () => {
         <div className="relative flex flex-col lg:flex-row-reverse items-center bg-blue-100 rounded-2xl shadow-md p-4 lg:p-8 overflow-visible gap-6">
           <div className="relative w-full lg:w-auto lg:mr-[-40px]">
             <img
-              src="/images/galeri1.jpg"
+              src="/images/sejarah2.png"
               alt="Foto Sejarah 2"
               className="w-full lg:w-[480px] h-[300px] object-cover rounded-xl shadow-lg"
             />

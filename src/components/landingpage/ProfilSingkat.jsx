@@ -7,7 +7,7 @@ const ProfilSingkat = () => {
         {/* Gambar dengan border & rounded kanan atas dan bawah */}
         <div className="border-[3px] border-pink-300 rounded-tr-[50px] rounded-br-[50px] p-1 w-full md:w-1/2">
           <img
-            src="/images/hero-illustration.png" // Ganti sesuai path kamu
+            src="/images/gambar1.png" // Ganti sesuai path kamu
             alt="TK Negeri 1 Sangatta Utara"
             className="w-full h-auto object-cover rounded-tr-[40px] rounded-br-[40px]"
           />
@@ -33,9 +33,13 @@ const ProfilSingkat = () => {
 
           {/* Tombol Selengkapnya di kanan bawah */}
           <div className="flex justify-end mt-4">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full transition">
+            <a
+              href="/data-kepengurusan"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full transition"
+            >
               Selengkapnya &gt;&gt;
-            </button>
+            </a>
+
           </div>
         </div>
       </div>

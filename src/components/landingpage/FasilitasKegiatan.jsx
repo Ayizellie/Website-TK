@@ -17,7 +17,7 @@ const Fasilitas = () => {
             <div className="w-full md:w-[360px] lg:w-[260px] ml-4 md:ml-6">
               <div className="border-[3px] border-blue-300 rounded-bl-[95px] rounded-br-[95px] p-1 bg-white">
                 <img
-                  src="/images/galeri1.jpg"
+                  src="/images/gambaar.png"
                   alt="Fasilitas TK"
                   className="w-full h-full object-cover rounded-bl-[95px] rounded-br-[95px]"
                 />
@@ -37,7 +37,7 @@ const Fasilitas = () => {
         {/* Tombol */}
         <div className="flex justify-end mt-6">
           <a
-            href="/fasilitas"
+            href="/fasilitas-kegiatan"
             className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full transition"
           >
             Selengkapnya &gt;&gt;
